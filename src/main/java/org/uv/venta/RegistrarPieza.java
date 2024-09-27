@@ -4,6 +4,13 @@
  */
 package org.uv.venta;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import javax.swing.JOptionPane;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONObject;
+
 /**
  *
  * @author Berna
@@ -177,7 +184,53 @@ public class RegistrarPieza extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+       try {
+            // URL del controlador PHP
+            URL url = new URL("http://localhost/phppostgres/Proyectos-de-Software/controllers/manufactura-controllers/pieza-controller.php?action=agregar");
+
+            // Crear la conexión
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+
+            // Recoger los valores de los componentes de la interfaz
+            String nombre = txtNombre.getText(); // Asegúrate de tener un campo para el nombre
+            String descripcion = txtDescripcion.getText();
+            double costo = Double.parseDouble(txtCosto.getText()); // Cambié precio a costo según la clase
+            int existencia = Integer.parseInt(txtExistencia.getText());
+
+            JSONObject json = new JSONObject();
+            json.put("action", "agregar");       
+            json.put("txtNombre", nombre); 
+            json.put("txtDescripcion", descripcion);
+            json.put("txtCosto", costo); 
+            json.put("txtExistencia", existencia); 
+
+             System.out.println(json.toString());
+            // Enviar el JSON al servidor
+            OutputStream os = conn.getOutputStream();
+            os.write(json.toString().getBytes("utf-8"));
+            os.flush();
+
+            // Leer el código de respuesta del servidor
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Mostrar mensaje de éxito
+                JOptionPane.showMessageDialog(null, "Pieza registrado con éxito");
+            } else {
+                // Mostrar mensaje de error
+                JOptionPane.showMessageDialog(null, "Error al registrar la pieza: " + responseCode);
+            }
+
+            // Cerrar la conexión
+            conn.disconnect();
+
+        } catch (Exception e) {
+            // Mostrar mensaje de error en caso de excepción
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
