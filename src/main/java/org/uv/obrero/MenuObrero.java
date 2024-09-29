@@ -4,7 +4,6 @@
  */
 package org.uv.obrero;
 
-import org.uv.ps.*;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
