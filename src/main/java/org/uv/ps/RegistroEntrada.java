@@ -120,35 +120,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            URL url = new URL("http://localhost/");
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            conn.setDoOutput(true);
-
-            String claveEmpleado = jTextField2.getText();
-            String hora = jTextField3.getText();
-            String tipo = "entrada";  
-
-            String params = "txtClaveEmpleado=" + claveEmpleado + "&txtHora=" + hora + "&txtTipo=" + tipo;
-
-            try (OutputStream os = conn.getOutputStream()) {
-                byte[] input = params.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-
-            int responseCode = conn.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                JOptionPane.showMessageDialog(null, "Asistencia registrada con éxito");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al registrar asistencia: " + responseCode);
-            }
-
-        } catch (HeadlessException | IOException e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
