@@ -129,7 +129,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal1.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal1.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inicio.png"))); // NOI18N
         btnPrincipal1.setText("Principal");
         btnPrincipal1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal1.setBorderPainted(false);
@@ -146,7 +146,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal5.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal5.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/extension.png"))); // NOI18N
         btnPrincipal5.setText("Pieza");
         btnPrincipal5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal5.setBorderPainted(false);
@@ -163,7 +163,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal6.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal6.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/processing-car.png"))); // NOI18N
         btnPrincipal6.setText("Material");
         btnPrincipal6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal6.setBorderPainted(false);
@@ -180,7 +180,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal7.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal7.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/product.png"))); // NOI18N
         btnPrincipal7.setText("Producto");
         btnPrincipal7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal7.setBorderPainted(false);
@@ -197,7 +197,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal8.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal8.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal8.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proveedor.png"))); // NOI18N
         btnPrincipal8.setText("Proveedor");
         btnPrincipal8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal8.setBorderPainted(false);
@@ -214,7 +214,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal9.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal9.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotel-supplier.png"))); // NOI18N
         btnPrincipal9.setText("Proveedor Material");
         btnPrincipal9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal9.setBorderPainted(false);
@@ -231,7 +231,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal10.setBackground(new java.awt.Color(21, 101, 192));
         btnPrincipal10.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnPrincipal10.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-outline.png"))); // NOI18N
+        btnPrincipal10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employee.png"))); // NOI18N
         btnPrincipal10.setText("Empleado");
         btnPrincipal10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnPrincipal10.setBorderPainted(false);
