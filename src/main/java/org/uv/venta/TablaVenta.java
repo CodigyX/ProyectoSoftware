@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package org.uv.obrero;
+package org.uv.venta;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,12 +19,12 @@ import org.uv.principal.Dashboard;
  *
  * @author johan
  */
-public class TablaAsistencia extends javax.swing.JPanel {
+public class TablaVenta extends javax.swing.JPanel {
 
     /**
-     * Creates new form TablaAsistencia
+     * Creates new form TablaVenta
      */
-    public TablaAsistencia() {
+    public TablaVenta() {
         initComponents();
     }
 
@@ -44,12 +44,13 @@ public class TablaAsistencia extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txtIngresarBuscar = new javax.swing.JTextField();
-        btnNuevo = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnDevolucion = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title.setText("Gestion de Asistencia");
+        Title.setText("Gestion de Venta");
 
         btnBuscar.setBackground(new java.awt.Color(18, 90, 173));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -63,17 +64,17 @@ public class TablaAsistencia extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Clave", "Fecha", "Hora", "Tipo"
+                "ClaveProducto", "ClaveCliente", "Monto", "IVA", "Promocion", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, true, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -103,13 +104,23 @@ public class TablaAsistencia extends javax.swing.JPanel {
             }
         });
 
-        btnNuevo.setBackground(new java.awt.Color(4, 162, 97));
-        btnNuevo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(4, 162, 97));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Registrar Venta");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnDevolucion.setBackground(new java.awt.Color(255, 51, 51));
+        btnDevolucion.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        btnDevolucion.setForeground(new java.awt.Color(255, 255, 255));
+        btnDevolucion.setText("Devolucion");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionActionPerformed(evt);
             }
         });
 
@@ -117,18 +128,6 @@ public class TablaAsistencia extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(txtIngresarBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -138,6 +137,22 @@ public class TablaAsistencia extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addComponent(Title)))
                 .addGap(110, 110, 110))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(txtIngresarBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar)
+                        .addGap(1, 1, 1)
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDevolucion)
+                        .addGap(12, 12, 12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +163,8 @@ public class TablaAsistencia extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(txtIngresarBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
@@ -169,7 +185,7 @@ public class TablaAsistencia extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 408, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -180,49 +196,36 @@ public class TablaAsistencia extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
-            // Crear el JSON con el parámetro de búsqueda
-            JSONObject json = new JSONObject();
-            json.put("txtClaveEmpleado", txtIngresarBuscar.getText());
-            json.put("action", "buscarPorEmpleado");
+        JSONObject json = new JSONObject();
+        json.put("txtClaveCliente", txtIngresarBuscar.getText());
+        json.put("action", "buscarPorClaveCliente");
 
-            // Enviar la solicitud y obtener la respuesta
-            String response = sendHttpRequest("buscarPorEmpleado", json);
+        String response = sendHttpRequest("buscarPorClaveCliente", json);
 
-            // Parsear la respuesta JSON
-            JSONObject jsonResponse = new JSONObject(response);
-            String mensaje = jsonResponse.getString("sMensaje");
-            
-            if (jsonResponse.has("arrAsistencias")) {
-                JSONArray asistenciasArray = jsonResponse.getJSONArray("arrAsistencias");
-                
-                // Limpiar la tabla antes de agregar nuevos datos
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                model.setRowCount(0);
+        JSONObject jsonResponse = new JSONObject(response);
+        String mensaje = jsonResponse.getString("sMensaje");
 
-                // Añadir cada registro de asistencia a la tabla
-                for (int i = 0; i < asistenciasArray.length(); i++) {
-                    JSONObject asistencia = asistenciasArray.getJSONObject(i);
-                    model.addRow(new Object[]{
-                        asistencia.getString("clave"),
-                        asistencia.getString("fecha"),
-                        asistencia.getString("hora"),
-                        asistencia.getString("tipo")
-                    });
-                }
+        if (jsonResponse.has("venta")) {
+            JSONObject venta = jsonResponse.getJSONObject("venta");
 
-                JOptionPane.showMessageDialog(this, mensaje);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontraron asistencias.");
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al buscar la asistencia: " + e.getMessage());
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Venta encontrada:\n" +
+                    "Clave Producto: " + venta.getString("claveProducto") + "\n" +
+                    "Monto: " + venta.getDouble("monto") + "\n" +
+                    "IVA: " + venta.getDouble("iva") + "\n" +
+                    "Promoción: " + venta.getString("promocion") + "\n" +
+                    "Total: " + venta.getDouble("total"));
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró la venta.");
         }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al buscar la venta: " + e.getMessage());
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtIngresarBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIngresarBuscarMousePressed
-        if (txtIngresarBuscar.getText().equals("Ingrese la clave a buscar"))
+        if (txtIngresarBuscar.getText().equals("Ingrese la clave de usuario a buscar"))
         txtIngresarBuscar.setText("");
     }//GEN-LAST:event_txtIngresarBuscarMousePressed
 
@@ -234,12 +237,17 @@ public class TablaAsistencia extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIngresarBuscarActionPerformed
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        Dashboard.ShowJPanel(new RegistroAsistencia());
-    }//GEN-LAST:event_btnNuevoActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDevolucionActionPerformed
+
 
     private String sendHttpRequest(String action, JSONObject jsonData) throws Exception {
-        String urlString = "http://localhost/phppostgres/Proyectos-de-Software/controllers/rrhh-controllers/asistencia-controller.php?action=" + action;
+        String urlString = "http://localhost/phppostgres/Proyectos-de-Software/controllers/venta-controllers/venta-controller.php?action=" + action;
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         
@@ -266,11 +274,13 @@ public class TablaAsistencia extends javax.swing.JPanel {
         return response.toString();
     }
     
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnDevolucion;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

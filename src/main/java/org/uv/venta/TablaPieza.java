@@ -76,6 +76,11 @@ public class TablaPieza extends javax.swing.JPanel {
                 txtBuscarMouseReleased(evt);
             }
         });
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 620, 30));
 
         search.setBackground(new java.awt.Color(18, 90, 173));
@@ -254,6 +259,10 @@ public class TablaPieza extends javax.swing.JPanel {
     private void btnNuevo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevo2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevo2ActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
