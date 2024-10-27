@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import org.uv.ps.*;
 import org.uv.venta.TablaPieza;
+import org.uv.venta.TablaProducto;
 
 /**
  *
@@ -87,7 +88,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal1 = new javax.swing.JButton();
         btnPrincipal5 = new javax.swing.JButton();
         btnPrincipal6 = new javax.swing.JButton();
-        btnPrincipal7 = new javax.swing.JButton();
+        btnProducto = new javax.swing.JButton();
         btnPrincipal8 = new javax.swing.JButton();
         btnPrincipal9 = new javax.swing.JButton();
         btnPrincipal10 = new javax.swing.JButton();
@@ -177,20 +178,20 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        btnPrincipal7.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal7.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/product.png"))); // NOI18N
-        btnPrincipal7.setText("Producto");
-        btnPrincipal7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal7.setBorderPainted(false);
-        btnPrincipal7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal7.setIconTextGap(10);
-        btnPrincipal7.addActionListener(new java.awt.event.ActionListener() {
+        btnProducto.setBackground(new java.awt.Color(21, 101, 192));
+        btnProducto.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/product.png"))); // NOI18N
+        btnProducto.setText("Producto");
+        btnProducto.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnProducto.setBorderPainted(false);
+        btnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProducto.setIconTextGap(10);
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal7ActionPerformed(evt);
+                btnProductoActionPerformed(evt);
             }
         });
 
@@ -255,7 +256,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(btnPrincipal10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,7 +267,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(btnPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -399,9 +400,9 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnPrincipal6ActionPerformed
 
-    private void btnPrincipal7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrincipal7ActionPerformed
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+       ShowJPanel(new TablaProducto());
+    }//GEN-LAST:event_btnProductoActionPerformed
 
     private void btnPrincipal8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal8ActionPerformed
         // TODO add your handling code here:
@@ -435,9 +436,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnPrincipal10;
     private javax.swing.JButton btnPrincipal5;
     private javax.swing.JButton btnPrincipal6;
-    private javax.swing.JButton btnPrincipal7;
     private javax.swing.JButton btnPrincipal8;
     private javax.swing.JButton btnPrincipal9;
+    private javax.swing.JButton btnProducto;
     private static javax.swing.JPanel contentPanel;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel fondo;

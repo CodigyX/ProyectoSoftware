@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import org.uv.principal.Dashboard;
 import static org.uv.principal.Dashboard.ShowJPanel;
 import org.uv.venta.Prueba;
+import org.uv.venta.ActualizarPieza;
 /**
  *
  * @author 2omar
@@ -252,7 +253,7 @@ public class TablaPieza extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnNuevo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevo2ActionPerformed
-        // TODO add your handling code here:
+         Dashboard.ShowJPanel(new ActualizarPieza());
     }//GEN-LAST:event_btnNuevo2ActionPerformed
 
 
