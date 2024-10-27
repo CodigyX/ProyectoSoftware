@@ -17,6 +17,7 @@ import java.util.Locale;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import org.uv.ps.*;
+import org.uv.venta.TablaCliente;
 import org.uv.venta.TablaPieza;
 
 /**
@@ -91,6 +92,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal8 = new javax.swing.JButton();
         btnPrincipal9 = new javax.swing.JButton();
         btnPrincipal10 = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         navText = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
@@ -245,6 +247,23 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btnClientes.setBackground(new java.awt.Color(21, 101, 192));
+        btnClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnClientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clientes.png"))); // NOI18N
+        btnClientes.setText("Clientes");
+        btnClientes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnClientes.setBorderPainted(false);
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnClientes.setIconTextGap(10);
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -258,7 +277,8 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(btnPrincipal7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
         jPanel4Layout.setVerticalGroup(
@@ -277,6 +297,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(btnPrincipal9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrincipal10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(209, Short.MAX_VALUE))
         );
 
@@ -415,6 +437,10 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrincipal10ActionPerformed
 
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        ShowJPanel(new TablaCliente());
+    }//GEN-LAST:event_btnClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,6 +457,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appName;
+    private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnPrincipal1;
     private javax.swing.JButton btnPrincipal10;
     private javax.swing.JButton btnPrincipal5;
