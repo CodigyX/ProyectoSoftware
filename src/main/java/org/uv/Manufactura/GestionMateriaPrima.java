@@ -1,4 +1,4 @@
-package org.uv.obrero;
+package org.uv.Manufactura;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

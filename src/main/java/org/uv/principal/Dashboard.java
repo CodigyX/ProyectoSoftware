@@ -10,37 +10,65 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import org.uv.ps.*;
 import org.uv.venta.TablaCliente;
 import org.uv.venta.TablaPieza;
+import org.uv.venta.TablaVendedor;
 
 /**
  *
  * @author 2omar
  */
 public class Dashboard extends javax.swing.JFrame {
+    private Timer timer;
 
     public Dashboard() {
         initComponents();
+        initHourReload();
         InitStyles();
         SetDate();
         InitContent();
     }
 
     private void SetDate() {
-        LocalDate now = LocalDate.now();
+        LocalDateTime now = LocalDateTime.now(); 
         int year = now.getYear();
         int dia = now.getDayOfMonth();
         int month = now.getMonthValue();
-        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " ;Septiembre",
-             "Octubre", "Noviembre", "Diciemrbre"};
-        dateText.setText("Hoy es " + dia + " de " + meses[month - 1] + " de " + year);
+        int hour = now.getHour();
+        int minute = now.getMinute();
+        int second = now.getSecond();
+    
+        String[] meses = {
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        };
+    
+        String fechaFormateada = String.format(
+            "Hoy es %d de %s de %d, %02d:%02d:%02d", 
+            dia, meses[month - 1], year, hour, minute, second
+        );
+
+        dateText.setText(fechaFormateada);
+    }
+    
+     private void initHourReload(){
+        timer = new Timer(1000, e -> SetDate());
+        timer.start();  
+    }
+    
+    private void closeHourReload(){
+        if (timer != null && timer.isRunning()) {
+            timer.stop(); 
+        }
     }
 
     private void InitStyles() {
@@ -93,6 +121,7 @@ public class Dashboard extends javax.swing.JFrame {
         btnPrincipal9 = new javax.swing.JButton();
         btnPrincipal10 = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
+        btnVendedores = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         navText = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
@@ -111,6 +140,11 @@ public class Dashboard extends javax.swing.JFrame {
         popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setMinimumSize(new java.awt.Dimension(1034, 645));
@@ -264,6 +298,23 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btnVendedores.setBackground(new java.awt.Color(21, 101, 192));
+        btnVendedores.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnVendedores.setForeground(new java.awt.Color(255, 255, 255));
+        btnVendedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendedor.png"))); // NOI18N
+        btnVendedores.setText("Vendedores");
+        btnVendedores.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnVendedores.setBorderPainted(false);
+        btnVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVendedores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVendedores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnVendedores.setIconTextGap(10);
+        btnVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendedoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -278,7 +329,8 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(btnPrincipal6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
         jPanel4Layout.setVerticalGroup(
@@ -299,6 +351,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(btnPrincipal10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(209, Short.MAX_VALUE))
         );
 
@@ -328,7 +382,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(appName, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -441,6 +495,14 @@ public class Dashboard extends javax.swing.JFrame {
         ShowJPanel(new TablaCliente());
     }//GEN-LAST:event_btnClientesActionPerformed
 
+    private void btnVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedoresActionPerformed
+        ShowJPanel(new TablaVendedor());
+    }//GEN-LAST:event_btnVendedoresActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        closeHourReload();
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -465,6 +527,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnPrincipal7;
     private javax.swing.JButton btnPrincipal8;
     private javax.swing.JButton btnPrincipal9;
+    private javax.swing.JButton btnVendedores;
     private static javax.swing.JPanel contentPanel;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel fondo;
