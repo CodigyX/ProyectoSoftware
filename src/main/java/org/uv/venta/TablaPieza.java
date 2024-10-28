@@ -7,8 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
-import org.uv.principal.Dashboard;
-import static org.uv.principal.Dashboard.ShowJPanel;
+import org.uv.ps.Dashboard;
+import static org.uv.ps.Dashboard.ShowJPanel;
 import org.uv.venta.Prueba;
 /**
  *

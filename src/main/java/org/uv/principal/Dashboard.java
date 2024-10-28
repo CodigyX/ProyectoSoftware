@@ -10,37 +10,68 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import org.uv.Manufactura.GestionProveedor;
+import org.uv.Manufactura.TablaMaterial;
 import org.uv.ps.*;
+import org.uv.venta.TablaCliente;
 import org.uv.venta.TablaPieza;
+import org.uv.venta.TablaProducto;
+import org.uv.venta.TablaVendedor;
 
 /**
  *
  * @author 2omar
  */
 public class Dashboard extends javax.swing.JFrame {
+    private Timer timer;
 
     public Dashboard() {
         initComponents();
+        initHourReload();
         InitStyles();
         SetDate();
         InitContent();
     }
 
     private void SetDate() {
-        LocalDate now = LocalDate.now();
+        LocalDateTime now = LocalDateTime.now(); 
         int year = now.getYear();
         int dia = now.getDayOfMonth();
         int month = now.getMonthValue();
-        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " ;Septiembre",
-             "Octubre", "Noviembre", "Diciemrbre"};
-        dateText.setText("Hoy es " + dia + " de " + meses[month - 1] + " de " + year);
+        int hour = now.getHour();
+        int minute = now.getMinute();
+        int second = now.getSecond();
+    
+        String[] meses = {
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        };
+    
+        String fechaFormateada = String.format(
+            "Hoy es %d de %s de %d, %02d:%02d:%02d", 
+            dia, meses[month - 1], year, hour, minute, second
+        );
+
+        dateText.setText(fechaFormateada);
+    }
+    
+     private void initHourReload(){
+        timer = new Timer(1000, e -> SetDate());
+        timer.start();  
+    }
+    
+    private void closeHourReload(){
+        if (timer != null && timer.isRunning()) {
+            timer.stop(); 
+        }
     }
 
     private void InitStyles() {
@@ -86,12 +117,14 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         btnPrincipal1 = new javax.swing.JButton();
-        btnPrincipal5 = new javax.swing.JButton();
-        btnPrincipal6 = new javax.swing.JButton();
-        btnPrincipal7 = new javax.swing.JButton();
-        btnPrincipal8 = new javax.swing.JButton();
+        btnPieza = new javax.swing.JButton();
+        btnMaterial = new javax.swing.JButton();
+        btnProducto = new javax.swing.JButton();
+        btnProveedor = new javax.swing.JButton();
         btnPrincipal9 = new javax.swing.JButton();
-        btnPrincipal10 = new javax.swing.JButton();
+        btnEmpleado = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
+        btnVendedores = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         navText = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
@@ -110,6 +143,11 @@ public class Dashboard extends javax.swing.JFrame {
         popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setMinimumSize(new java.awt.Dimension(1034, 645));
@@ -144,71 +182,71 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        btnPrincipal5.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal5.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/extension.png"))); // NOI18N
-        btnPrincipal5.setText("Pieza");
-        btnPrincipal5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal5.setBorderPainted(false);
-        btnPrincipal5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal5.setIconTextGap(10);
-        btnPrincipal5.addActionListener(new java.awt.event.ActionListener() {
+        btnPieza.setBackground(new java.awt.Color(21, 101, 192));
+        btnPieza.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnPieza.setForeground(new java.awt.Color(255, 255, 255));
+        btnPieza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/extension.png"))); // NOI18N
+        btnPieza.setText("Pieza");
+        btnPieza.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnPieza.setBorderPainted(false);
+        btnPieza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPieza.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPieza.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPieza.setIconTextGap(10);
+        btnPieza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal5ActionPerformed(evt);
+                btnPiezaActionPerformed(evt);
             }
         });
 
-        btnPrincipal6.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal6.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/processing-car.png"))); // NOI18N
-        btnPrincipal6.setText("Material");
-        btnPrincipal6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal6.setBorderPainted(false);
-        btnPrincipal6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal6.setIconTextGap(10);
-        btnPrincipal6.addActionListener(new java.awt.event.ActionListener() {
+        btnMaterial.setBackground(new java.awt.Color(21, 101, 192));
+        btnMaterial.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnMaterial.setForeground(new java.awt.Color(255, 255, 255));
+        btnMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/processing-car.png"))); // NOI18N
+        btnMaterial.setText("Material");
+        btnMaterial.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnMaterial.setBorderPainted(false);
+        btnMaterial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMaterial.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMaterial.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnMaterial.setIconTextGap(10);
+        btnMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal6ActionPerformed(evt);
+                btnMaterialActionPerformed(evt);
             }
         });
 
-        btnPrincipal7.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal7.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/product.png"))); // NOI18N
-        btnPrincipal7.setText("Producto");
-        btnPrincipal7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal7.setBorderPainted(false);
-        btnPrincipal7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal7.setIconTextGap(10);
-        btnPrincipal7.addActionListener(new java.awt.event.ActionListener() {
+        btnProducto.setBackground(new java.awt.Color(21, 101, 192));
+        btnProducto.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/product.png"))); // NOI18N
+        btnProducto.setText("Producto");
+        btnProducto.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnProducto.setBorderPainted(false);
+        btnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProducto.setIconTextGap(10);
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal7ActionPerformed(evt);
+                btnProductoActionPerformed(evt);
             }
         });
 
-        btnPrincipal8.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal8.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal8.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proveedor.png"))); // NOI18N
-        btnPrincipal8.setText("Proveedor");
-        btnPrincipal8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal8.setBorderPainted(false);
-        btnPrincipal8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal8.setIconTextGap(10);
-        btnPrincipal8.addActionListener(new java.awt.event.ActionListener() {
+        btnProveedor.setBackground(new java.awt.Color(21, 101, 192));
+        btnProveedor.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnProveedor.setForeground(new java.awt.Color(255, 255, 255));
+        btnProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proveedor.png"))); // NOI18N
+        btnProveedor.setText("Proveedor");
+        btnProveedor.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnProveedor.setBorderPainted(false);
+        btnProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProveedor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnProveedor.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProveedor.setIconTextGap(10);
+        btnProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal8ActionPerformed(evt);
+                btnProveedorActionPerformed(evt);
             }
         });
 
@@ -229,20 +267,54 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        btnPrincipal10.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal10.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal10.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employee.png"))); // NOI18N
-        btnPrincipal10.setText("Empleado");
-        btnPrincipal10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal10.setBorderPainted(false);
-        btnPrincipal10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal10.setIconTextGap(10);
-        btnPrincipal10.addActionListener(new java.awt.event.ActionListener() {
+        btnEmpleado.setBackground(new java.awt.Color(21, 101, 192));
+        btnEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employee.png"))); // NOI18N
+        btnEmpleado.setText("Empleado");
+        btnEmpleado.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnEmpleado.setBorderPainted(false);
+        btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEmpleado.setIconTextGap(10);
+        btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal10ActionPerformed(evt);
+                btnEmpleadoActionPerformed(evt);
+            }
+        });
+
+        btnClientes.setBackground(new java.awt.Color(21, 101, 192));
+        btnClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnClientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clientes.png"))); // NOI18N
+        btnClientes.setText("Clientes");
+        btnClientes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnClientes.setBorderPainted(false);
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnClientes.setIconTextGap(10);
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+
+        btnVendedores.setBackground(new java.awt.Color(21, 101, 192));
+        btnVendedores.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnVendedores.setForeground(new java.awt.Color(255, 255, 255));
+        btnVendedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendedor.png"))); // NOI18N
+        btnVendedores.setText("Vendedores");
+        btnVendedores.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnVendedores.setBorderPainted(false);
+        btnVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVendedores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVendedores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnVendedores.setIconTextGap(10);
+        btnVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendedoresActionPerformed(evt);
             }
         });
 
@@ -253,13 +325,15 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPrincipal10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPieza, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
         jPanel4Layout.setVerticalGroup(
@@ -267,17 +341,21 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(btnPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPieza, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrincipal9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(209, Short.MAX_VALUE))
         );
 
@@ -307,7 +385,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(appName, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -392,29 +470,41 @@ public class Dashboard extends javax.swing.JFrame {
          ShowJPanel(new Principal());
     }//GEN-LAST:event_btnPrincipal1ActionPerformed
 
-    private void btnPrincipal5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal5ActionPerformed
+    private void btnPiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPiezaActionPerformed
         ShowJPanel(new TablaPieza());
-    }//GEN-LAST:event_btnPrincipal5ActionPerformed
+    }//GEN-LAST:event_btnPiezaActionPerformed
 
-    private void btnPrincipal6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal6ActionPerformed
-        
-    }//GEN-LAST:event_btnPrincipal6ActionPerformed
+    private void btnMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaterialActionPerformed
+        Dashboard.ShowJPanel(new TablaMaterial());
+    }//GEN-LAST:event_btnMaterialActionPerformed
 
-    private void btnPrincipal7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrincipal7ActionPerformed
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        Dashboard.ShowJPanel(new TablaProducto());
+    }//GEN-LAST:event_btnProductoActionPerformed
 
-    private void btnPrincipal8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal8ActionPerformed
-        ShowJPanel(new GestionProveedor());
-    }//GEN-LAST:event_btnPrincipal8ActionPerformed
+    private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
+        Dashboard.ShowJPanel(new GestionProveedor());
+    }//GEN-LAST:event_btnProveedorActionPerformed
 
     private void btnPrincipal9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrincipal9ActionPerformed
 
-    private void btnPrincipal10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrincipal10ActionPerformed
+    private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
+        
+    }//GEN-LAST:event_btnEmpleadoActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        Dashboard.ShowJPanel(new TablaCliente());
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedoresActionPerformed
+        ShowJPanel(new TablaVendedor());
+    }//GEN-LAST:event_btnVendedoresActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        closeHourReload();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -432,13 +522,15 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appName;
+    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnEmpleado;
+    private javax.swing.JButton btnMaterial;
+    private javax.swing.JButton btnPieza;
     private javax.swing.JButton btnPrincipal1;
-    private javax.swing.JButton btnPrincipal10;
-    private javax.swing.JButton btnPrincipal5;
-    private javax.swing.JButton btnPrincipal6;
-    private javax.swing.JButton btnPrincipal7;
-    private javax.swing.JButton btnPrincipal8;
     private javax.swing.JButton btnPrincipal9;
+    private javax.swing.JButton btnProducto;
+    private javax.swing.JButton btnProveedor;
+    private javax.swing.JButton btnVendedores;
     private static javax.swing.JPanel contentPanel;
     private javax.swing.JLabel dateText;
     private javax.swing.JPanel fondo;
