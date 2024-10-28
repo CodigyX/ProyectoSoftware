@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Locale;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+import org.uv.Manufactura.GestionProveedor;
 import org.uv.ps.*;
 import org.uv.venta.TablaPieza;
 
@@ -404,7 +405,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrincipal7ActionPerformed
 
     private void btnPrincipal8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal8ActionPerformed
-        // TODO add your handling code here:
+        ShowJPanel(new GestionProveedor());
     }//GEN-LAST:event_btnPrincipal8ActionPerformed
 
     private void btnPrincipal9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal9ActionPerformed

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package org.uv.Manufactura;
+
 import org.uv.Venta.*;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -14,6 +15,7 @@ import org.uv.principal.Dashboard;
 import static org.uv.principal.Dashboard.ShowJPanel;
 import org.uv.venta.TablaPieza;
 import org.uv.venta.TextPrompt;
+
 /**
  *
  * @author 2omar
@@ -25,11 +27,13 @@ public class RegistroProveedor extends javax.swing.JPanel {
      */
     public RegistroProveedor() {
         initComponents();
-         TextPrompt clave = new TextPrompt("Ingrese la clave de la pieza", txtClave);
-        TextPrompt nombre = new TextPrompt("Ingrese el nombre de la pieza", txtNombre);
-        TextPrompt descripcion = new TextPrompt("Ingrese la descripción de la pieza", txtDireccion);
-        TextPrompt costo = new TextPrompt("Ingrese el costo de la pieza", txtCorreo);
-        TextPrompt existencia = new TextPrompt("Ingrese las existencias de la pieza", txtTelefono);
+        // Asignación de TextPrompts para los campos del proveedor
+        TextPrompt clave = new TextPrompt("Ingrese la clave del proveedor", txtClave);
+        TextPrompt nombre = new TextPrompt("Ingrese el nombre del proveedor", txtNombre);
+        TextPrompt direccion = new TextPrompt("Ingrese la dirección del proveedor", txtDireccion);
+        TextPrompt correoElectronico = new TextPrompt("Ingrese el correo electrónico del proveedor", txtCorreo);
+        TextPrompt telefonos = new TextPrompt("Ingrese el teléfono del proveedor", txtTelefono);
+        TextPrompt rfc = new TextPrompt("Ingrese el RFC del proveedor", txtRFC);
     }
 
     /**
@@ -297,7 +301,7 @@ public class RegistroProveedor extends javax.swing.JPanel {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
             // URL del controlador PHP
-            URL url = new URL("http://localhost/phppostgres/Proyectos-de-Software/controllers/manufactura-controllers/pieza-controller.php?action=agregar");
+            URL url = new URL("http://localhost/phppostgres/Proyectos-de-Software/controllers/manufactura-controllers/proveedor-controller.php?action=agregar");
 
             // Crear la conexión
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -306,19 +310,25 @@ public class RegistroProveedor extends javax.swing.JPanel {
             conn.setRequestProperty("Content-Type", "application/json");
 
             // Recoger los valores de los componentes de la interfaz
-            String nombre = txtNombre.getText(); // Asegúrate de tener un campo para el nombre
-            String descripcion = txtDireccion.getText();
-            double costo = Double.parseDouble(txtCorreo.getText()); // Cambié precio a costo según la clase
-            int existencia = Integer.parseInt(txtTelefono.getText());
+            String clave = txtClave.getText(); // Campo clave del proveedor
+            String nombre = txtNombre.getText(); // Nombre del proveedor
+            String direccion = txtDireccion.getText(); // Dirección del proveedor
+            String correoElectronico = txtCorreo.getText(); // Correo electrónico del proveedor
+            String telefonos = txtTelefono.getText(); // Teléfonos del proveedor
+            String rfc = txtRFC.getText(); // RFC del proveedor
 
+            // Crear el objeto JSON con los datos del proveedor
             JSONObject json = new JSONObject();
             json.put("action", "agregar");
+            json.put("txtClave", clave);
             json.put("txtNombre", nombre);
-            json.put("txtDescripcion", descripcion);
-            json.put("txtCosto", costo);
-            json.put("txtExistencia", existencia);
+            json.put("txtDireccion", direccion);
+            json.put("txtCorreoElectronico", correoElectronico);
+            json.put("txtTelefonos", telefonos);
+            json.put("txtRFC", rfc);
 
             System.out.println(json.toString());
+
             // Enviar el JSON al servidor
             OutputStream os = conn.getOutputStream();
             os.write(json.toString().getBytes("utf-8"));
@@ -328,24 +338,24 @@ public class RegistroProveedor extends javax.swing.JPanel {
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 // Mostrar mensaje de éxito
-                JOptionPane.showMessageDialog(null, "Pieza registrado con éxito");
+                JOptionPane.showMessageDialog(null, "Proveedor registrado con éxito");
             } else {
                 // Mostrar mensaje de error
-                JOptionPane.showMessageDialog(null, "Error al registrar la pieza: " + responseCode);
+                JOptionPane.showMessageDialog(null, "Error al registrar el proveedor: " + responseCode);
             }
 
             // Cerrar la conexión
             conn.disconnect();
 
         } catch (Exception e) {
-
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
         }
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
-       Dashboard.ShowJPanel(new TablaPieza());
+        Dashboard.ShowJPanel(new TablaPieza());
     }//GEN-LAST:event_btnAgregar1ActionPerformed
 
     private void txtRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFCActionPerformed

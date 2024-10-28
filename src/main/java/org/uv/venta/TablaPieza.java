@@ -96,10 +96,12 @@ public class TablaPieza extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search (2).png"))); // NOI18N
         jLabel4.setText("Buscar");
-        search.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, -1));
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        search.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 30));
 
-        jPanel2.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 80, 30));
+        jPanel2.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 100, 30));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -149,40 +151,40 @@ public class TablaPieza extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, 290));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, 280));
 
-        btnBorrar.setBackground(new java.awt.Color(255, 0, 0));
+        btnBorrar.setBackground(new java.awt.Color(255, 204, 204));
         btnBorrar.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBorrar.setText("Borrar");
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete (1).png"))); // NOI18N
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, -1, 30));
+        jPanel2.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, -1, 40));
 
         btnNuevo.setBackground(new java.awt.Color(4, 162, 97));
         btnNuevo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setText("Nuevo");
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/plus.png"))); // NOI18N
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, 30));
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, -1, 40));
 
-        btnNuevo2.setBackground(new java.awt.Color(18, 90, 173));
+        btnNuevo2.setBackground(new java.awt.Color(0, 102, 204));
         btnNuevo2.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         btnNuevo2.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevo2.setText("Editar");
+        btnNuevo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edit (1).png"))); // NOI18N
         btnNuevo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevo2ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNuevo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, 30));
+        jPanel2.add(btnNuevo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, -1, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

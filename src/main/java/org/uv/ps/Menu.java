@@ -57,7 +57,6 @@ public class Menu extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 0, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/box.png"))); // NOI18N
         jButton2.setText(" Productos");
         jButton2.setBorderPainted(false);
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -70,7 +69,6 @@ public class Menu extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/processing (4).png"))); // NOI18N
         jButton1.setText(" Materiales");
         jButton1.setBorderPainted(false);
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -78,7 +76,6 @@ public class Menu extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(0, 0, 102));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/partnership (1).png"))); // NOI18N
         jButton3.setText(" Piezas");
         jButton3.setBorderPainted(false);
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -93,7 +90,6 @@ public class Menu extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(0, 0, 102));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/house.png"))); // NOI18N
         jButton5.setText(" Inicio");
         jButton5.setBorderPainted(false);
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
