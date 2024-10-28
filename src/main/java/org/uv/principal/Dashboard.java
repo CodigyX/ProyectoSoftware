@@ -121,7 +121,6 @@ public class Dashboard extends javax.swing.JFrame {
         btnMaterial = new javax.swing.JButton();
         btnProducto = new javax.swing.JButton();
         btnProveedor = new javax.swing.JButton();
-        btnPrincipal9 = new javax.swing.JButton();
         btnEmpleado = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnVendedores = new javax.swing.JButton();
@@ -250,23 +249,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        btnPrincipal9.setBackground(new java.awt.Color(21, 101, 192));
-        btnPrincipal9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnPrincipal9.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrincipal9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hotel-supplier.png"))); // NOI18N
-        btnPrincipal9.setText("Proveedor Material");
-        btnPrincipal9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPrincipal9.setBorderPainted(false);
-        btnPrincipal9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPrincipal9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrincipal9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnPrincipal9.setIconTextGap(10);
-        btnPrincipal9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrincipal9ActionPerformed(evt);
-            }
-        });
-
         btnEmpleado.setBackground(new java.awt.Color(21, 101, 192));
         btnEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnEmpleado.setForeground(new java.awt.Color(255, 255, 255));
@@ -326,7 +308,6 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrincipal9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -349,14 +330,12 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrincipal9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel4);
@@ -486,10 +465,6 @@ public class Dashboard extends javax.swing.JFrame {
         Dashboard.ShowJPanel(new GestionProveedor());
     }//GEN-LAST:event_btnProveedorActionPerformed
 
-    private void btnPrincipal9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipal9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrincipal9ActionPerformed
-
     private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
         
     }//GEN-LAST:event_btnEmpleadoActionPerformed
@@ -527,7 +502,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnMaterial;
     private javax.swing.JButton btnPieza;
     private javax.swing.JButton btnPrincipal1;
-    private javax.swing.JButton btnPrincipal9;
     private javax.swing.JButton btnProducto;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnVendedores;

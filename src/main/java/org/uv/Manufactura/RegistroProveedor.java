@@ -355,7 +355,7 @@ public class RegistroProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
-        Dashboard.ShowJPanel(new TablaPieza());
+        Dashboard.ShowJPanel(new GestionProveedor());
     }//GEN-LAST:event_btnAgregar1ActionPerformed
 
     private void txtRFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRFCActionPerformed
