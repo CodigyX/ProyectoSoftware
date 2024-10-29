@@ -4,7 +4,7 @@
  */
 package org.uv.Manufactura;
 
-import org.uv.Venta.*;
+import org.uv.venta.*;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;

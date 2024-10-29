@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.swing.JOptionPane;
 import org.codehaus.jettison.json.JSONObject;
-import org.uv.principal.Dashboard;
+import org.uv.ps.Dashboard;
 /**
  *
  * @author sgerardov

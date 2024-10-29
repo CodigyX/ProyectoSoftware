@@ -1,3 +1,5 @@
+package org.uv.Manufactura;
+
 public class Proveedor {
     private String clave;
     private String nombre;

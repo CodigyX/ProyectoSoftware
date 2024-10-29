@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package org.uv.venta;
-import org.uv.principal.Dashboard;
+import org.uv.ps.Dashboard;
 /**
  *
  * @author sgerardov
